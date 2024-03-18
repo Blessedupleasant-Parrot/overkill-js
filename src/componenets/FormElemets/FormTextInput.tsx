@@ -1,5 +1,4 @@
-import * as stylex from '@stylexjs/stylex';
-// import { StyleXStyles } from '@stylexjs/stylex';
+import FormElementLabel from './FormInputLabel';
 
 type Props = {
   label?: string;
@@ -10,20 +9,11 @@ type Props = {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const defStyles = stylex.create({
-  labelLeft: {
-    marginRight: '10px'
-  },
-  labelRight: {
-    marginLeft: '10PX'
-  }
-});
-
 const FormTextInput = ({
-  label,
-  name,
+  label = '',
+  name = '',
   type = 'text',
-  labelPos = 'right',
+  labelPos = 'left',
   value = '',
   onChange
 }: Props) => {
@@ -33,16 +23,10 @@ const FormTextInput = ({
 
   return (
     <div>
-      {labelPos === 'left' && (
-        <label {...stylex.props(defStyles.labelLeft)} htmlFor={name}>
-          {label}
-        </label>
-      )}
-      {labelPos === 'above' && (
-        <>
-          <label htmlFor={name}>{label}</label>
-          <br />
-        </>
+      {labelPos === 'left' || labelPos === 'above' ? (
+        <FormElementLabel position={labelPos} name={name} label={label} />
+      ) : (
+        ''
       )}
       <input
         value={value}
@@ -51,16 +35,10 @@ const FormTextInput = ({
         id={name}
         onChange={onChangeHandler}
       />
-      {labelPos === 'right' && (
-        <label {...stylex.props(defStyles.labelRight)} htmlFor={name}>
-          {label}
-        </label>
-      )}
-      {labelPos === 'below' && (
-        <>
-          <br />
-          <label htmlFor={name}>{label}</label>
-        </>
+      {labelPos === 'right' || labelPos === 'below' ? (
+        <FormElementLabel position={labelPos} name={name} label={label} />
+      ) : (
+        ''
       )}
     </div>
   );
