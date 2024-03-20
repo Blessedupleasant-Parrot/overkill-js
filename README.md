@@ -1,4 +1,4 @@
-# Overkill.js
+# Overkill.js <🫠>
 
 > I mean, do you *really* need that much customization?
 
