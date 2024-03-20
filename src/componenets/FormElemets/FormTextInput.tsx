@@ -1,5 +1,4 @@
 import FormElementLabel from './FormInputLabel';
-
 type Props = {
   label?: string;
   name?: string;

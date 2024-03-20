@@ -14,7 +14,6 @@ type Props = {
     }>;
   };
 };
-
 const defStyles = stylex.create({
   page: { width: '100%', fontFamily: 'inherit' },
   pageContents: { width: '1024px', margin: '0 auto' }
